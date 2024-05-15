@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:rah/enums/modeenum.dart';
+import 'package:rah/enums/positionenum.dart';
+import 'package:rah/pages/runtrainingpage.dart';
 
-class TreinamentoPage extends StatefulWidget {
-  const TreinamentoPage({super.key});
+class TrainingPage extends StatefulWidget {
+  static const routeName = '/training';
+
+  const TrainingPage({super.key});
 
   @override
-  State<TreinamentoPage> createState() => _TreinamentoPageState();
+  State<TrainingPage> createState() => _TrainingPageState();
 }
 
-class _TreinamentoPageState extends State<TreinamentoPage> {
+class _TrainingPageState extends State<TrainingPage> {
   final _txtIdentificador = TextEditingController();
 
   @override
@@ -58,7 +63,18 @@ class _TreinamentoPageState extends State<TreinamentoPage> {
               const ModeChoice(),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (_txtIdentificador.text.isEmpty) {
+                    const snackBar = SnackBar(
+                      duration: Duration(seconds: 3),
+                      content: Text('Identificação não informada!'),
+                    );
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  } else {
+                    Navigator.pushNamed(context, RunTrainingPage.routeName);
+                  }
+                },
                 child: const Text('Iniciar'),
               ),
               const Spacer(),
@@ -69,8 +85,6 @@ class _TreinamentoPageState extends State<TreinamentoPage> {
     );
   }
 }
-
-enum PositionEnum { lying, sitting, wallking }
 
 class PositionChoice extends StatefulWidget {
   const PositionChoice({super.key});
@@ -109,8 +123,6 @@ class _PositionChoiceState extends State<PositionChoice> {
   }
 }
 
-enum ModeEnum { light, moderate, vigorous }
-
 class ModeChoice extends StatefulWidget {
   const ModeChoice({super.key});
 
@@ -128,7 +140,7 @@ class _ModeChoiceState extends State<ModeChoice> {
         ButtonSegment<ModeEnum>(
             value: ModeEnum.light,
             label: Text('Leve'),
-            icon: Icon(Icons.arrow_forward)),
+            icon: Icon(Icons.chevron_right_outlined)),
         ButtonSegment<ModeEnum>(
             value: ModeEnum.moderate,
             label: Text('Moderado'),
@@ -136,7 +148,7 @@ class _ModeChoiceState extends State<ModeChoice> {
         ButtonSegment<ModeEnum>(
             value: ModeEnum.vigorous,
             label: Text('Vigoroso'),
-            icon: Icon(Icons.arrow_forward)),
+            icon: Icon(Icons.double_arrow)),
       ],
       selected: <ModeEnum>{modeView},
       onSelectionChanged: (Set<ModeEnum> newSelection) {

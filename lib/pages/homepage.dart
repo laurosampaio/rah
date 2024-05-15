@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rah/pages/recognitionpage.dart';
+// import 'package:rah/pages/trainingpage.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = '/';
+
   const HomePage({super.key});
 
   @override
@@ -22,16 +26,16 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, TrainingPage.routeName);
+            //   },
+            //   child: const Text('Treinar Atividades'),
+            // ),
+            // const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/treinamento');
-              },
-              child: const Text('Treinar Atividades'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/reconhecimento');
+                Navigator.pushNamed(context, RecognitionPage.routeName);
               },
               child: const Text('Reconhecimento de Atividades'),
             ),

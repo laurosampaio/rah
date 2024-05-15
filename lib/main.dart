@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rah/pages/runtrainingpage.dart';
 import 'package:rah/pages/homepage.dart';
-import 'package:rah/pages/reconhecimentopage.dart';
-import 'package:rah/pages/treinamentopage.dart';
+import 'package:rah/pages/recognitionpage.dart';
+import 'package:rah/pages/trainingpage.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,11 +20,12 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF002147)),
         useMaterial3: true,
       ),
-      initialRoute: '/',
+      initialRoute: HomePage.routeName,
       routes: <String, WidgetBuilder>{
-        '/': (context) => const HomePage(),
-        '/treinamento': (context) => const TreinamentoPage(),
-        '/reconhecimento': (context) => const ReconhecimentoPage(),
+        HomePage.routeName: (context) => const HomePage(),
+        TrainingPage.routeName: (context) => const TrainingPage(),
+        RecognitionPage.routeName: (context) => const RecognitionPage(),
+        RunTrainingPage.routeName: (context) => const RunTrainingPage(),
       },
     );
   }

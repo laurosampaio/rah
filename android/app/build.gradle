@@ -66,8 +66,8 @@ flutter {
 }
 
 dependencies {
-    implementation 'org.tensorflow:tensorflow-lite:2.15.0'
-    implementation 'org.tensorflow:tensorflow-lite-select-tf-ops:2.15.0'
+    // implementation 'org.tensorflow:tensorflow-lite:2.15.0'
+    // implementation 'org.tensorflow:tensorflow-lite-select-tf-ops:2.15.0'
 
     // implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT'
     // // This dependency adds the necessary TF op support.

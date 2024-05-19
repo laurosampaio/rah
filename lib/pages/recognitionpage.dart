@@ -69,9 +69,9 @@ class _RecognitionPageState extends State<RecognitionPage> {
     try {
       _interpreter = await Interpreter.fromAsset('assets/rah_model.tflite');
 
-      print('Model loaded successfully');
+      print('Modelo carregado com sucesso!');
     } catch (e) {
-      print('Failed to load model: $e');
+      print('Falha ao carregar modelo: $e');
     }
   }
 
@@ -93,7 +93,7 @@ class _RecognitionPageState extends State<RecognitionPage> {
         _predictedAction = classes[predictedClassIndex];
       });
     } catch (e) {
-      print('Failed to run inference: $e');
+      print('Falha ao realizar predição: $e');
     }
   }
 
@@ -142,14 +142,14 @@ class _RecognitionPageState extends State<RecognitionPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('TensorFlow Lite Example'),
+          title: const Text('Reconhecimento das atividades'),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                'Accelerometer Values:',
+                'Valores do Acelerômetro:',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
@@ -162,7 +162,7 @@ class _RecognitionPageState extends State<RecognitionPage> {
                     : () {
                         startListeningToAccelerometer();
                       },
-                child: const Text('Start Recognition'),
+                child: const Text('Iniciar Reconhecimento'),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -172,16 +172,16 @@ class _RecognitionPageState extends State<RecognitionPage> {
                     _predictedAction = '';
                   });
                 },
-                child: const Text('Stop Recognition'),
+                child: const Text('Parar Reconhecimento'),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: testModelWithExampleInput,
-                child: const Text('Test Model with Example Input'),
+                child: const Text('Teste do modelo com valores fixos'),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Predicted Action:',
+                'Ação reconhecida:',
               ),
               const SizedBox(height: 10),
               Text(
